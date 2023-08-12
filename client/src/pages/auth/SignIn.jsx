@@ -53,7 +53,7 @@ const SignIn = () => {
             Welcome back
           </h2>
           <p className="text-center md:text-left text-sm">
-            New to Recipen?{" "}
+            New to Project Hub?{" "}
             <Link
               to={"/auth/signup"}
               className="text-primary font-semibold"
@@ -94,7 +94,8 @@ const SignIn = () => {
         </form>
       </div>
       {/* Sign in banner image */}
-      <div className="hidden md:block basis-1/2 bg-login bg-no-repeat bg-cover bg-center"></div>
+      {/* <img src="http://image.png"></img> */}
+      {/* <div className="hidden md:block basis-1/2 bg-login bg-no-repeat bg-cover bg-center"></div> */}
     </section>
   );
 };

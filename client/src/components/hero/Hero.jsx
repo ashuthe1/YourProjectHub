@@ -1,5 +1,6 @@
 import React from "react";
 import { GiKnifeFork } from "react-icons/gi";
+import {FaLaptopCode} from "react-icons/fa"
 import { Button } from "..";
 import { Link } from "react-router-dom";
 
@@ -11,7 +12,7 @@ const Hero = () => {
           Feast. Share. Connect.
         </span>
         <h2 className="font-bold text-3xl md:text-5xl text-center md:text-start">
-          Welcome to <span className="text-primary">Recipen</span>
+          Welcome to <span className="text-primary">Project Hub</span>
         </h2>
         <p className="text-gray-600 text-center md:text-start">
           Where food lovers unite to discover mouthwatering recipes, delightful
@@ -20,11 +21,11 @@ const Hero = () => {
         </p>
         <Link to={"/recipe"}>
           <Button
-            content={"Explore Recipes"}
+            content={"Explore Projects!"}
             customCss={
               "mt-4 md:mt-8 md:py-3 md:px-9 md:text-lg max-w-max rounded-full"
             }
-            icon={<GiKnifeFork />}
+            icon={<FaLaptopCode />}
           />
         </Link>
       </div>

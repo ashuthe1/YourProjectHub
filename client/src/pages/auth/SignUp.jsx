@@ -111,7 +111,7 @@ const SignUp = () => {
         </form>
       </div>
       {/* Sign up banner image */}
-      <div className="hidden md:block basis-1/2 bg-login bg-no-repeat bg-cover bg-center"></div>
+      {/* <div className="hidden md:block basis-1/2 bg-login bg-no-repeat bg-cover bg-center"></div> */}
     </section>
   );
 };
