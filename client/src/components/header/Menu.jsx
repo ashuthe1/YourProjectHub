@@ -32,11 +32,11 @@ const Menu = ({ isCollapsed, setIsCollapsed }) => {
             </li>
             <li>
               <NavLink
-                to={"/recipe"}
+                to={"/project"}
                 onClick={() => setIsCollapsed(!isCollapsed)}
                 className="relative w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-primary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center font-semibold text-gray-600"
               >
-                Recipes
+                Projects
               </NavLink>
             </li>
             <li>

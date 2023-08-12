@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { AllCards, ComponentLoading } from "../../components";
 import { useDispatch } from "react-redux";
-import { setRecipes } from "../../features/recipe/recipeSlice";
-import { useGetRecipesQuery } from "../../features/recipe/recipeApiSlice";
+import { setProjects } from "../../features/project/projectSlice";
+import { useGetProjectsQuery } from "../../features/project/projectApiSlice";
 
-const Recipe = () => {
-  const { data, isLoading } = useGetRecipesQuery();
+const Project = () => {
+  const { data, isLoading } = useGetProjectsQuery();
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!isLoading) {
-      dispatch(setRecipes(data));
+      dispatch(setProjects(data));
     }
   }, [isLoading]);
 
@@ -32,4 +32,4 @@ const Recipe = () => {
   );
 };
 
-export default Recipe;
+export default Project;

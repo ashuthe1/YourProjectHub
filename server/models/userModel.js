@@ -15,7 +15,7 @@ const schema = mongoose.Schema(
     favorites: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Recipe",
+        ref: "Project",
       },
     ],
     roles: {

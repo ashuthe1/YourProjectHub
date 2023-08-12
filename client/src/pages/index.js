@@ -8,12 +8,12 @@ const Error = lazy(() => import("./message/Error"));
 const CheckoutSuccess = lazy(() => import("./message/CheckoutSuccess"));
 const CheckoutFailure = lazy(() => import("./message/CheckoutFailure"));
 
-const Recipe = lazy(() => import("./recipe/Recipe"));
-const SingleRecipe = lazy(() => import("./recipe/SingleRecipe"));
-const SavedRecipes = lazy(() => import("./recipe/SavedRecipes"));
-const AddRecipe = lazy(() => import("./recipe/AddRecipe"));
-const MyRecipes = lazy(() => import("./recipe/MyRecipes"));
-const EditRecipe = lazy(() => import("./recipe/EditRecipe"));
+const Project = lazy(() => import("./project/Project"));
+const SingleProject = lazy(() => import("./project/SingleProject"));
+const SavedProjects = lazy(() => import("./project/SavedProjects"));
+const AddProject = lazy(() => import("./project/AddProject"));
+const MyProjects = lazy(() => import("./project/MyProjects"));
+const EditProject = lazy(() => import("./project/EditProject"));
 
 const Blogs = lazy(() => import("./blogs/Blogs"));
 const AddBlog = lazy(() => import("./blogs/AddBlog"));
@@ -22,7 +22,7 @@ const MyBlogs = lazy(() => import("./blogs/MyBlogs"));
 const EditBlog = lazy(() => import("./blogs/EditBlog"));
 
 const Users = lazy(() => import("./dashboard/Users"));
-const DashboardRecipes = lazy(() => import("./dashboard/DashboardRecipes"));
+const DashboardProjects = lazy(() => import("./dashboard/DashboardProjects"));
 const DashboardBlogs = lazy(() => import("./dashboard/DashboardBlogs"));
 
 const SignIn = lazy(() => import("./auth/SignIn"));
@@ -32,19 +32,19 @@ export {
   Home,
   Contact,
   Profile,
-  Recipe,
-  SingleRecipe,
-  SavedRecipes,
-  AddRecipe,
-  MyRecipes,
-  EditRecipe,
+  Project,
+  SingleProject,
+  SavedProjects,
+  AddProject,
+  MyProjects,
+  EditProject,
   Blogs,
   AddBlog,
   SingleBlog,
   MyBlogs,
   EditBlog,
   Users,
-  DashboardRecipes,
+  DashboardProjects,
   DashboardBlogs,
   Error,
   CheckoutSuccess,

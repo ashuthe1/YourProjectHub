@@ -23,9 +23,9 @@ const Subscribe = () => {
           price={"Free"}
           subtitle={"Perfect to get started"}
           featureTitle={"Basic includes:"}
-          features={["Access to recipes", "Access to blogs", "Save recipes"]}
+          features={["Access to projects", "Access to blogs", "Save projects"]}
           btnText={"Continue for free"}
-          link={"/recipe"}
+          link={"/project"}
         />
         <SubscribeCard
           title={"Pro"}
@@ -35,7 +35,7 @@ const Subscribe = () => {
           price={"₹999"}
           subtitle={"Best for professionals"}
           featureTitle={"Everything in Basic, plus:"}
-          features={["Add your own recipe", "Add your own blog", "hello3"]}
+          features={["Add your own project", "Add your own blog", "hello3"]}
           btnText={"Get started"}
         />
       </div>

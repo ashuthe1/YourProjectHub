@@ -1,15 +1,15 @@
 const express = require("express");
 const {
-  getAllRecipes,
-  getRecipe,
-  addRecipe,
-  updateRecipe,
-  rateRecipe,
-  deleteRecipe,
+  getAllProjects,
+  getProject,
+  addProject,
+  updateProject,
+  rateProject,
+  deleteProject,
   addComment,
   deleteComment,
-  toggleFavoriteRecipe,
-} = require("../controllers/recipeController");
+  toggleFavoriteProject,
+} = require("../controllers/projectController");
 const ROLES_LIST = require("../config/rolesList");
 const verifyJwt = require("../middleware/verifyJwt");
 const verifyRoles = require("../middleware/verifyRoles");
@@ -18,10 +18,10 @@ const router = express.Router();
 
 router
   .route("/")
-  .get(getAllRecipes)
+  .get(getAllProjects)
   .post(
     [verifyJwt, verifyRoles(ROLES_LIST.Admin, ROLES_LIST.ProUser)],
-    addRecipe
+    addProject
   );
 
 router
@@ -31,19 +31,19 @@ router
       verifyJwt,
       verifyRoles(ROLES_LIST.BasicUser, ROLES_LIST.ProUser, ROLES_LIST.Admin),
     ],
-    rateRecipe
+    rateProject
   );
 
 router
   .route("/:id")
-  .get(getRecipe)
+  .get(getProject)
   .put(
     [verifyJwt, verifyRoles(ROLES_LIST.Admin, ROLES_LIST.ProUser)],
-    updateRecipe
+    updateProject
   )
   .delete(
     [verifyJwt, verifyRoles(ROLES_LIST.Admin, ROLES_LIST.ProUser)],
-    deleteRecipe
+    deleteProject
   );
 
 router
@@ -57,7 +57,7 @@ router
   );
 
 router
-  .route("/comment/:recipeId/:commentId")
+  .route("/comment/:projectId/:commentId")
   .delete(
     [
       verifyJwt,
@@ -73,7 +73,7 @@ router
       verifyJwt,
       verifyRoles(ROLES_LIST.BasicUser, ROLES_LIST.ProUser, ROLES_LIST.Admin),
     ],
-    toggleFavoriteRecipe
+    toggleFavoriteProject
   );
 
 module.exports = router;

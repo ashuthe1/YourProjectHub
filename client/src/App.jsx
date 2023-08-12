@@ -2,22 +2,22 @@ import { Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   AddBlog,
-  AddRecipe,
+  AddProject,
   Blogs,
   Contact,
   DashboardBlogs,
-  DashboardRecipes,
+  DashboardProjects,
   EditBlog,
-  EditRecipe,
+  EditProject,
   Error,
   Home,
   MyBlogs,
-  MyRecipes,
+  MyProjects,
   Profile,
-  Recipe,
-  SavedRecipes,
+  Project,
+  SavedProjects,
   SingleBlog,
-  SingleRecipe,
+  SingleProject,
   Users,
   SignIn,
   SignUp,
@@ -52,8 +52,8 @@ function App() {
                 element={<Users />}
               />
               <Route
-                path="recipes"
-                element={<DashboardRecipes />}
+                path="project"
+                element={<DashboardProjects />}
               />
               <Route
                 path="blogs"
@@ -81,22 +81,22 @@ function App() {
               index
               element={<Home />}
             />
-            <Route path="recipe">
+            <Route path="project">
               <Route
                 index
-                element={<Recipe />}
+                element={<Project />}
               />
               <Route
                 path=":id"
-                element={<SingleRecipe />}
+                element={<SingleProject />}
               />
               <Route
                 path="saved"
-                element={<SavedRecipes />}
+                element={<SavedProjects />}
               />
               <Route
                 path = "add"
-                element={<AddRecipe />}
+                element={<AddProject />}
               />
               <Route
                 element={
@@ -105,15 +105,15 @@ function App() {
               >
                 <Route
                   path="add"
-                  element={<AddRecipe />}
+                  element={<AddProject />}
                 />
                 <Route
-                  path="my-recipes"
-                  element={<MyRecipes />}
+                  path="my-projects"
+                  element={<MyProjects />}
                 />
                 <Route
                   path="edit/:id"
-                  element={<EditRecipe />}
+                  element={<EditProject />}
                 />
               </Route>
             </Route>

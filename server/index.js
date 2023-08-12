@@ -24,7 +24,7 @@ app.use(express.json());
 // route middleware
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/user", require("./routes/userRoutes"));
-app.use("/api/recipe", require("./routes/recipeRoutes"));
+app.use("/api/project", require("./routes/projectRoutes"));
 app.use("/api/blog", require("./routes/blogRoutes"));
 app.use("/api/stripe", require("./routes/subscriptionRoutes"));
 

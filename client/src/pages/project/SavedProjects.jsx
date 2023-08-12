@@ -3,10 +3,10 @@ import { AllCards, ComponentLoading } from "../../components";
 import jwtDecode from "jwt-decode";
 import { selectCurrentToken } from "../../features/auth/authSlice";
 import { useSelector } from "react-redux";
-import { useGetRecipesQuery } from "../../features/recipe/recipeApiSlice";
+import { useGetProjectsQuery } from "../../features/project/projectApiSlice";
 
 const index = () => {
-  const { data, isLoading } = useGetRecipesQuery();
+  const { data, isLoading } = useGetProjectsQuery();
 
   const favorites = useSelector(selectCurrentToken)
     ? jwtDecode(useSelector(selectCurrentToken)).UserInfo.favorites
@@ -24,9 +24,9 @@ const index = () => {
         <AllCards
           mainTitle={"Your Flavorful Collection"}
           tagline={
-            "Welcome to your personal culinary treasury - a haven for your favorite recipes!"
+            "Welcome to your personal culinary treasury - a haven for your favorite projects!"
           }
-          type={"recipe"}
+          type={"project"}
           data={updatedData}
         />
       )}

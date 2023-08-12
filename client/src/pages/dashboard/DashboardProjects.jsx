@@ -1,32 +1,32 @@
 import React, { useEffect } from "react";
 import { ComponentLoading, Table } from "../../components";
-import { setRecipes } from "../../features/recipe/recipeSlice";
+import { setProjects } from "../../features/project/projectSlice";
 import { useDispatch } from "react-redux";
 import {
-  useGetRecipesQuery,
-  useDeleteRecipeMutation,
-} from "../../features/recipe/recipeApiSlice";
+  useGetProjectsQuery,
+  useDeleteProjectMutation,
+} from "../../features/project/projectApiSlice";
 import { Avatar as MuiAvatar, Rating } from "@mui/material";
 
-const DashboardRecipes = () => {
-  const { data, isLoading } = useGetRecipesQuery();
+const DashboardProjects = () => {
+  const { data, isLoading } = useGetProjectsQuery();
 
   const dispatch = useDispatch();
   const updatedData = data?.map((item, index) => ({
     ...item,
     id: index + 1,
   }));
-  const [deleteRecipe] = useDeleteRecipeMutation();
+  const [deleteProject] = useDeleteProjectMutation();
 
   const handleDelete = (_id) => {
     if (window.confirm("Are you sure you want to delete?")) {
-      deleteRecipe(_id);
+      deleteProject(_id);
     }
   };
 
   useEffect(() => {
     if (!isLoading) {
-      dispatch(setRecipes(data));
+      dispatch(setProjects(data));
     }
   }, [isLoading]);
 
@@ -116,4 +116,4 @@ const DashboardRecipes = () => {
   );
 };
 
-export default DashboardRecipes;
+export default DashboardProjects;

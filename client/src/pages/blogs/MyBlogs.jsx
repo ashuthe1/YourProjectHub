@@ -20,9 +20,9 @@ const index = () => {
         <ComponentLoading />
       ) : (
         <AllCards
-          mainTitle={"Your Recipen Chronicles"}
+          mainTitle={"Your Projectn Chronicles"}
           tagline={
-            "Dive into a world of your engaging articles and captivating stories on Recipen Chronicles."
+            "Dive into a world of your engaging articles and captivating stories on Projectn Chronicles."
           }
           type={"blog"}
           data={updatedData}

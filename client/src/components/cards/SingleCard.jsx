@@ -6,7 +6,7 @@ import { Rating } from "@mui/material";
 import dateFormat from "../../common/dateFormat";
 import { toast } from "react-toastify";
 import jwtDecode from "jwt-decode";
-import { useToggleFavoriteMutation } from "../../features/recipe/recipeApiSlice";
+import { useToggleFavoriteMutation } from "../../features/project/projectApiSlice";
 import {
   selectCurrentToken,
   setCredentials,
@@ -38,7 +38,7 @@ const SingleCard = ({ singleData, type }) => {
         return navigate("/auth/signin");
       }
       const userData = await toast.promise(
-        toggleFavorite({ recipeId: singleData._id }).unwrap(),
+        toggleFavorite({ projectId: singleData._id }).unwrap(),
         {
           pending: "Please wait...",
           success: "Favorites updated",
@@ -59,7 +59,7 @@ const SingleCard = ({ singleData, type }) => {
         <div className="relative h-full w-full">
           {/* Only for singleData */}
           {/* Favorite & share button */}
-          {type === "recipe" && (
+          {type === "project" && (
             <div className="absolute top-2 right-0 flex flex-col gap-2 p-2 bg-light rounded-l-lg">
               {user?.favorites?.some((ele) => ele === singleData._id) ? (
                 <AiFillHeart
@@ -73,7 +73,7 @@ const SingleCard = ({ singleData, type }) => {
                 />
               )}
               <ShareButton
-                url={`${import.meta.env.VITE_BASE_URL}/recipe/${
+                url={`${import.meta.env.VITE_BASE_URL}/project/${
                   singleData?._id
                 }`}
               />
@@ -100,7 +100,7 @@ const SingleCard = ({ singleData, type }) => {
             {singleData?.description.substring(0, 100)}...
           </p>
           {/* Card rating */}
-          {type === "recipe" && (
+          {type === "project" && (
             <Rating
               value={averageRating}
               readOnly
@@ -111,7 +111,7 @@ const SingleCard = ({ singleData, type }) => {
       </div>
       {/* Read more link */}
       {type === 'project' && (<Link
-        to={`/recipe/${singleData?._id}`}
+        to={`/project/${singleData?._id}`}
         className="flex gap-2 items-center p-4 mt-4 max-w-max hover:border-primary hover:text-primary"
       >
         Read more

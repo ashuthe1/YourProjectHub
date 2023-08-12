@@ -1,10 +1,10 @@
 import React from "react";
 import { Hero, HomeCategories, Subscribe } from "../../components";
-import { useGetRecipesQuery } from "../../features/recipe/recipeApiSlice";
+import { useGetProjectsQuery } from "../../features/project/projectApiSlice";
 import { useGetBlogsQuery } from "../../features/blog/blogApiSlice";
 
 const Home = () => {
-  const recipes = useGetRecipesQuery();
+  const projects = useGetProjectsQuery();
   const blogs = useGetBlogsQuery();
 
   return (
@@ -12,8 +12,8 @@ const Home = () => {
       <Hero />
       <HomeCategories
         title={"project"}
-        data={recipes?.data}
-        isLoading={recipes?.isLoading}
+        data={projects?.data}
+        isLoading={projects?.isLoading}
       />
       <Subscribe />
       <HomeCategories

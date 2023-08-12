@@ -5,9 +5,9 @@ import { RxCross2 } from "react-icons/rx";
 import uploadImage from "../../common/uploadImage";
 import { LinearProgress } from "@mui/material";
 import { toast } from "react-toastify";
-import { useAddRecipeMutation } from "../../features/recipe/recipeApiSlice";
+import { useAddProjectMutation } from "../../features/project/projectApiSlice";
 
-const AddRecipe = () => {
+const AddProject = () => {
   const [formDetails, setFormDetails] = useState({
     title: "",
     image: "",
@@ -26,7 +26,7 @@ const AddRecipe = () => {
     cookingTime: "",
     ingredient: "",
   });
-  const [addRecipe, { isLoading }] = useAddRecipeMutation();
+  const [addProject, { isLoading }] = useAddProjectMutation();
 
   const handleFocus = (e) => {
     setFocused({ ...focused, [e.target.id]: true });
@@ -70,8 +70,8 @@ const AddRecipe = () => {
       // return toast.error("Instructions cannot be empty");
 
     try {
-      const recipe = await toast.promise(
-        addRecipe({ ...formDetails }).unwrap(),
+      const Project = await toast.promise(
+        addProject({ ...formDetails }).unwrap(),
         {
           pending: "Please wait...",
           success: "Project added successfully",
@@ -319,14 +319,14 @@ const AddRecipe = () => {
             </div>
           </div>
           <Button
-            content={"Add recipe"}
+            content={"Add Project"}
             type={"submit"}
             customCss={"rounded px-4 py-1 max-w-max"}
             loading={isLoading}
           />
         </div>
         <hr className="block md:hidden mt-6" />
-        {/* Upload recipe image */}
+        {/* Upload Project image */}
         <div className="basis-1/3 rounded-xl shadow-md hover:shadow-primary hover:shadow flex justify-center items-center w-full p-8 max-h-[300px]">
           <label
             htmlFor="image"
@@ -366,4 +366,4 @@ const AddRecipe = () => {
   );
 };
 
-export default AddRecipe;
+export default AddProject;

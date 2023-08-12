@@ -6,16 +6,16 @@ import uploadImage from "../../common/uploadImage";
 import { LinearProgress } from "@mui/material";
 import { toast } from "react-toastify";
 import {
-  useGetRecipeQuery,
-  useUpdateRecipeMutation,
-} from "../../features/recipe/recipeApiSlice";
+  useGetProjectQuery,
+  useUpdateProjectMutation,
+} from "../../features/project/projectApiSlice";
 import { useParams } from "react-router-dom";
 
-const EditRecipe = () => {
+const EditProject = () => {
   const { id } = useParams();
 
-  const { data, ...rest } = useGetRecipeQuery(id);
-  const [updateRecipe, { isLoading }] = useUpdateRecipeMutation();
+  const { data, ...rest } = useGetProjectQuery(id);
+  const [updateProject, { isLoading }] = useUpdateProjectMutation();
 
   const [formDetails, setFormDetails] = useState({
     title: data?.title || "",
@@ -86,19 +86,19 @@ const EditRecipe = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formDetails.image) return toast.error("Upload recipe image");
+    if (!formDetails.image) return toast.error("Upload project image");
     if (!formDetails.ingredients.length)
       return toast.error("Ingredients cannot be empty");
     if (!formDetails.instructions.length)
       return toast.error("Instructions cannot be empty");
 
     try {
-      const recipe = await toast.promise(
-        updateRecipe({ ...formDetails, recipeId: id }).unwrap(),
+      const project = await toast.promise(
+        updateProject({ ...formDetails, projectId: id }).unwrap(),
         {
           pending: "Please wait...",
-          success: "Recipe updated successfully",
-          error: "Unable to update recipe",
+          success: "Project updated successfully",
+          error: "Unable to update project",
         }
       );
     } catch (error) {
@@ -109,7 +109,7 @@ const EditRecipe = () => {
 
   return (
     <section className="box flex flex-col gap-6">
-      <h2 className="font-bold text-xl">Add New Recipe</h2>
+      <h2 className="font-bold text-xl">Add New Project</h2>
       <hr />
       {rest.isLoading ? (
         <ComponentLoading />
@@ -124,7 +124,7 @@ const EditRecipe = () => {
                 htmlFor="title"
                 className="text-sm font-semibold mb-3 basis-1/2"
               >
-                Recipe name
+                Project name
               </label>
               <div className="flex flex-col basis-1/2">
                 <input
@@ -139,7 +139,7 @@ const EditRecipe = () => {
                   required
                   aria-required="true"
                   aria-describedby="title-error"
-                  placeholder="Enter recipe name"
+                  placeholder="Enter project name"
                   className="p-1.5 border bg-gray-100 rounded focus:outline outline-primary"
                 />
                 <span
@@ -156,7 +156,7 @@ const EditRecipe = () => {
                 htmlFor="description"
                 className="text-sm font-semibold mb-3 basis-1/2"
               >
-                Recipe description
+                Project description
               </label>
               <div className="flex flex-col basis-1/2">
                 <textarea
@@ -337,7 +337,7 @@ const EditRecipe = () => {
             />
           </div>
           <hr className="block md:hidden mt-6" />
-          {/* Upload recipe image */}
+          {/* Upload project image */}
           <div className="basis-1/3 rounded-xl shadow-md hover:shadow-primary hover:shadow flex justify-center items-center w-full p-8 max-h-[300px]">
             <label
               htmlFor="image"
@@ -378,4 +378,4 @@ const EditRecipe = () => {
   );
 };
 
-export default EditRecipe;
+export default EditProject;

@@ -14,13 +14,13 @@ import { BsStopwatch } from "react-icons/bs";
 import { LiaWeightSolid } from "react-icons/lia";
 import { AiOutlineHeart, AiFillHeart, AiOutlineUser } from "react-icons/ai";
 import {
-  useGetRecipeQuery,
-  useRateRecipeMutation,
-  useCommentRecipeMutation,
-  useDeleteCommentRecipeMutation,
+  useGetProjectQuery,
+  useRateProjectMutation,
+  useCommentProjectMutation,
+  useDeleteCommentProjectMutation,
   useToggleFavoriteMutation,
-  useDeleteRecipeMutation,
-} from "../../features/recipe/recipeApiSlice";
+  useDeleteProjectMutation,
+} from "../../features/project/projectApiSlice";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Rating, IconButton, Menu, MenuItem } from "@mui/material";
 import { toast } from "react-toastify";
@@ -32,7 +32,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { MoreVert } from "@mui/icons-material";
 
-const SingleRecipe = () => {
+const SingleProject = () => {
   const [rating, setRating] = useState(0);
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -40,12 +40,12 @@ const SingleRecipe = () => {
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
 
-  const { data, ...rest } = useGetRecipeQuery(id);
-  const [rateRecipe] = useRateRecipeMutation();
-  const [commentRecipe, { isLoading }] = useCommentRecipeMutation();
-  const [deleteComment] = useDeleteCommentRecipeMutation();
+  const { data, ...rest } = useGetProjectQuery(id);
+  const [rateProject] = useRateProjectMutation();
+  const [commentProject, { isLoading }] = useCommentProjectMutation();
+  const [deleteComment] = useDeleteCommentProjectMutation();
   const [toggleFavorite] = useToggleFavoriteMutation();
-  const [deleteRecipe] = useDeleteRecipeMutation();
+  const [deleteProject] = useDeleteProjectMutation();
 
   const user = useSelector(selectCurrentToken)
     ? jwtDecode(useSelector(selectCurrentToken)).UserInfo
@@ -76,11 +76,11 @@ const SingleRecipe = () => {
       }
       setRating(newValue);
       await toast.promise(
-        rateRecipe({ rating: newValue, recipeId: id }).unwrap(),
+        rateProject({ rating: newValue, projectId: id }).unwrap(),
         {
           pending: "Please wait...",
           success: "Rating added successfully",
-          error: "You have already rating this recipe",
+          error: "You have already rating this project",
         }
       );
     } catch (error) {
@@ -94,7 +94,7 @@ const SingleRecipe = () => {
 
     try {
       await toast.promise(
-        commentRecipe({ recipeId: id, comment: formDetails.message }).unwrap(),
+        commentProject({ projectId: id, comment: formDetails.message }).unwrap(),
         {
           pending: "Please wait...",
           success: "Comment added",
@@ -111,7 +111,7 @@ const SingleRecipe = () => {
   const handleDeleteComment = async (_id) => {
     try {
       await toast.promise(
-        deleteComment({ recipeId: id, commentId: _id }).unwrap(),
+        deleteComment({ projectId: id, commentId: _id }).unwrap(),
         {
           pending: "Please wait...",
           success: "Comment deleted",
@@ -132,7 +132,7 @@ const SingleRecipe = () => {
       }
 
       const userData = await toast.promise(
-        toggleFavorite({ recipeId: id }).unwrap(),
+        toggleFavorite({ projectId: id }).unwrap(),
         {
           pending: "Please wait...",
           success: "Favorites updated",
@@ -156,8 +156,8 @@ const SingleRecipe = () => {
 
   const handleMenuDelete = () => {
     if (window.confirm("Are you sure you want to delete?")) {
-      deleteRecipe(data?._id);
-      navigate("/recipe");
+      deleteProject(data?._id);
+      navigate("/project");
     }
     setAnchorEl(null);
   };
@@ -169,7 +169,7 @@ const SingleRecipe = () => {
       ) : (
         <section className="box flex flex-col gap-8">
           <div className="flex flex-col md:flex-row gap-12 items-center">
-            {/* Recipe image */}
+            {/* Project image */}
             <div className="basis-1/3">
               <img
                 src={data?.image}
@@ -177,7 +177,7 @@ const SingleRecipe = () => {
                 className="rounded w-full"
               />
             </div>
-            {/* Recipe details */}
+            {/* Project details */}
             <div className="basis-2/3 flex flex-col gap-2">
               <div className="flex justify-between">
                 <h2 className="font-bold text-xl md:text-3xl">{data?.title}</h2>
@@ -204,7 +204,7 @@ const SingleRecipe = () => {
                       onClose={handleMenuClose}
                     >
                       <MenuItem>
-                        <Link to={`/recipe/edit/${id}`}>Edit</Link>
+                        <Link to={`/project/edit/${id}`}>Edit</Link>
                       </MenuItem>
                       <MenuItem onClick={handleMenuDelete}>Delete</MenuItem>
                     </Menu>
@@ -229,18 +229,18 @@ const SingleRecipe = () => {
                     />
                   )}
                   <ShareButton
-                    url={`${import.meta.env.VITE_BASE_URL}/recipe/${data?._id}`}
+                    url={`${import.meta.env.VITE_BASE_URL}/project/${data?._id}`}
                   />
                 </div>
               </div>
-              {/* Recipe rating */}
+              {/* Project rating */}
               <Rating
                 value={averageRating}
                 size={"medium"}
                 readOnly
               />
               <p className="my-4">{data?.description}</p>
-              {/* Recipe time & cals */}
+              {/* Project time & cals */}
               <div className="flex flex-col sm:flex-row gap-4 justify-between w-2/3 mx-auto">
                 <div className="flex flex-col gap-1 items-center">
                   <BsStopwatch className="text-5xl text-gray-800" />
@@ -259,7 +259,7 @@ const SingleRecipe = () => {
           </div>
           <hr />
           <div className="flex flex-col md:flex-row gap-4">
-            {/* Recipe Ingredients */}
+            {/* Project Ingredients */}
             <div className="basis-1/3 flex flex-col gap-4 border-b-2 md:border-b-0 pb-4 md:pb-0 md:border-r-2 border-gray-200 items-center">
               <h3 className="font-bold text-2xl">Tech Stack</h3>
               <ol className="flex flex-col gap-2 list-decimal ml-5">
@@ -268,7 +268,7 @@ const SingleRecipe = () => {
                 ))}
               </ol>
             </div>
-            {/* Recipe Instructions */}
+            {/* Project Instructions */}
             <div className="basis-2/3 flex flex-col gap-4">
               <h3 className="font-bold text-2xl">Long Description</h3>
               <ul className="ml-2 flex flex-col gap-4">
@@ -282,11 +282,11 @@ const SingleRecipe = () => {
             </div>
           </div>
           <hr />
-          {/* Rate recipe */}
+          {/* Rate project */}
           {!data?.ratings?.some((obj) => obj.user === user?.userId) && (
             <>
               <div className="my-6 w-full sm:w-2/3 md:w-1/2 mx-auto flex justify-between gap-6">
-                <h3 className="font-bold text-2xl">Rate the recipe</h3>
+                <h3 className="font-bold text-2xl">Rate the project</h3>
                 <Rating
                   size={"large"}
                   precision={0.25}
@@ -297,7 +297,7 @@ const SingleRecipe = () => {
               <hr />
             </>
           )}
-          {/* Recipe comment form */}
+          {/* Project comment form */}
           <div className="my-10 w-full sm:w-2/3 md:w-1/2 mx-auto flex flex-col gap-6">
             <h3 className="font-bold text-2xl">Leave a Reply</h3>
             <form
@@ -350,7 +350,7 @@ const SingleRecipe = () => {
             </form>
           </div>
           <hr />
-          {/* Recipe comments */}
+          {/* Project comments */}
           <div className="w-full sm:w-4/5 mx-auto flex flex-col gap-6">
             <h3 className="font-bold text-2xl">Comments</h3>
             {data?.comments?.length ? (
@@ -374,4 +374,4 @@ const SingleRecipe = () => {
   );
 };
 
-export default SingleRecipe;
+export default SingleProject;

@@ -133,7 +133,7 @@ const AddBlog = () => {
           />
         </div>
         <hr className="block md:hidden mt-6" />
-        {/* Upload recipe image */}
+        {/* Upload project image */}
         <div className="basis-1/3 rounded-xl shadow-md hover:shadow-primary hover:shadow flex justify-center items-center w-full p-8 max-h-[300px]">
           <label
             htmlFor="image"

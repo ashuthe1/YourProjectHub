@@ -19,7 +19,7 @@ const Hero = () => {
           Supercharge your open source contributions with Project Hub!
           Collabrate with other developers and build amazing projects.
         </p>
-        <Link to={"/recipe"}>
+        <Link to={"/project"}>
           <Button
             content={"Explore Projects!"}
             customCss={

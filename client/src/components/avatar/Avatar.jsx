@@ -118,13 +118,13 @@ const Avatar = () => {
             <Divider />
             <MenuItem>
               <Link
-                to="/recipe/add"
+                to="/project/add"
                 className="flex items-center"
               >
                 <ListItemIcon>
                   <RestaurantMenu fontSize="small" />
                 </ListItemIcon>
-                Add new recipe
+                Add new project
               </Link>
             </MenuItem>
             <MenuItem>
@@ -140,13 +140,13 @@ const Avatar = () => {
             </MenuItem>
             <MenuItem>
               <Link
-                to="/recipe/my-recipes"
+                to="/project/my-projects"
                 className="flex items-center"
               >
                 <ListItemIcon>
                   <Fastfood fontSize="small" />
                 </ListItemIcon>
-                My recipes
+                My projects
               </Link>
             </MenuItem>
             <MenuItem>
@@ -164,7 +164,7 @@ const Avatar = () => {
         )}
         <MenuItem>
           <Link
-            to="/recipe/saved"
+            to="/project/saved"
             className="flex items-center"
           >
             <ListItemIcon>
