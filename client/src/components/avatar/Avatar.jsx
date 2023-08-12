@@ -108,7 +108,7 @@ const Avatar = () => {
               src={decoded?.profilePicture}
               sx={{ width: 32, height: 32, mr: 2 }}
             />{" "}
-            Profile
+            Edit Profile
           </Link>
         </MenuItem>
         {decoded?.roles?.find((role) =>
@@ -170,7 +170,7 @@ const Avatar = () => {
             <ListItemIcon>
               <Favorite fontSize="small" />
             </ListItemIcon>
-            Saved recipes
+            Saved Projects
           </Link>
         </MenuItem>
         <MenuItem onClick={handleLogout}>

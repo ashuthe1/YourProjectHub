@@ -1,6 +1,7 @@
 import React from "react";
 import { logoNoBg, logoNew } from "../../assets";
 import { Link } from "react-router-dom";
+import "./style.css";
 
 const Logo = ({ customCss, hideName = false }) => {
   return (
@@ -9,8 +10,8 @@ const Logo = ({ customCss, hideName = false }) => {
       className={`max-w-max ${customCss}`}
     >
       <div className="flex gap-1.5 items-center">
-        <div className="w-12">
-          <img
+        <div className="w-12 phlogo">
+          <img 
             src={logoNew}
             alt="Project Hub logo"
             className="w-full h-full"
