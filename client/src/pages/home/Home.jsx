@@ -11,7 +11,7 @@ const Home = () => {
     <>
       <Hero />
       <HomeCategories
-        title={"recipe"}
+        title={"project"}
         data={recipes?.data}
         isLoading={recipes?.isLoading}
       />

@@ -110,13 +110,22 @@ const SingleCard = ({ singleData, type }) => {
         </div>
       </div>
       {/* Read more link */}
-      <Link
-        to={`/${type}/${singleData?._id}`}
+      {type === 'project' && (<Link
+        to={`/recipe/${singleData?._id}`}
         className="flex gap-2 items-center p-4 mt-4 max-w-max hover:border-primary hover:text-primary"
       >
         Read more
         <BsArrowUpRight />
-      </Link>
+      </Link>)}
+
+      {type === 'blog' && (<Link
+        to={`/blog/${singleData?._id}`}
+        className="flex gap-2 items-center p-4 mt-4 max-w-max hover:border-primary hover:text-primary"
+      >
+
+        Read more
+        <BsArrowUpRight />
+      </Link>)}
     </div>
   );
 };

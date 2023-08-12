@@ -4,7 +4,7 @@ import {FaLaptopCode} from "react-icons/fa"
 import { Button } from "..";
 import { Link } from "react-router-dom";
 
-const text = "Code-->Collab-->Connect";
+const text = "Code --> Collab --> Connect";
 const Hero = () => {
   return (
     <section className="box h-[82vh] flex flex-col-reverse md:flex-row justify-between gap-8 md:gap-16">

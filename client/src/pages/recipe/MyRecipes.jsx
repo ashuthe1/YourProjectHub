@@ -24,7 +24,7 @@ const index = () => {
           tagline={
             "Welcome to your dedicated space where your imagination takes the lead."
           }
-          type={"recipe"}
+          type={"project"}
           data={updatedData}
         />
       )}
