@@ -41,27 +41,27 @@ const Contact = () => {
           <h4 className="font-bold">Visit us</h4>
           <p>Come say hello to our office</p>
           <p className="font-semibold text-sm">
-            Friends Colony, Mumbai, Maharashtra 400070
+            BMS College of Engineering, Bangalore
           </p>
         </div>
         <div className="mb-5 flex flex-col gap-1">
           <h4 className="font-bold">Chat with us</h4>
           <p>Our team is here to help</p>
           <a
-            href="mailto:recipen@abc.com"
+            href="mailto:ashutoshgautam.work@gmail.com"
             className="font-semibold text-sm"
           >
-            recipen@abc.com
+            ashutoshgautam.work@gmail.com
           </a>
         </div>
         <div className="mb-5 flex flex-col gap-1">
           <h4 className="font-bold">Call us</h4>
           <p>Mon-Fri from 9am to 6pm</p>
           <a
-            href="tel:+919876543210"
+            href="tel:+916266211605"
             className="font-semibold text-sm"
           >
-            +91 9876543210
+            +91 6266211605
           </a>
         </div>
         <div className="mb-5 flex flex-col gap-3">
@@ -71,7 +71,7 @@ const Contact = () => {
               className="hover:text-gray-500"
               whileHover={{ y: -4 }}
             >
-              <a href="https://github.com/Avinash905">
+              <a href="https://github.com/ashuthe1">
                 <AiFillGithub />
               </a>
             </motion.li>
@@ -79,7 +79,7 @@ const Contact = () => {
               className="rounded-full hover:text-blue-400"
               whileHover={{ y: -4 }}
             >
-              <a href="https://twitter.com/avinashdunna">
+              <a href="https://twitter.com/ashuthe1x">
                 <AiFillTwitterCircle />
               </a>
             </motion.li>
@@ -87,7 +87,7 @@ const Contact = () => {
               className="rounded-full hover:text-blue-600"
               whileHover={{ y: -4 }}
             >
-              <a href="https://www.linkedin.com/in/dunna-avinash">
+              <a href="https://www.linkedin.com/in/ashuthe1">
                 <AiFillLinkedin />
               </a>
             </motion.li>

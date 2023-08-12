@@ -20,11 +20,11 @@ const Recipe = () => {
         <ComponentLoading />
       ) : (
         <AllCards
-          mainTitle={"Discover Flavorful Creations"}
+          mainTitle={"Discover Open Source Projects!"}
           tagline={
-            "Delight in a diverse collection of mouthwatering recipes, curated and shared by passionate food enthusiasts."
+            "Supercharge your open source contributions with Project Hub! Collabrate with other developers and build amazing projects."
           }
-          type={"recipe"}
+          type={"Project"}
           data={data}
         />
       )}

@@ -63,7 +63,7 @@ const AddRecipe = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formDetails.image) return toast.error("Upload recipe image");
+    if (!formDetails.image) return toast.error("Upload Thumbnail image");
     if (!formDetails.ingredients.length)
       return toast.error("Ingredients cannot be empty");
     // if (!formDetails.instructions.length)
@@ -74,8 +74,8 @@ const AddRecipe = () => {
         addRecipe({ ...formDetails }).unwrap(),
         {
           pending: "Please wait...",
-          success: "Recipe added successfully",
-          error: "Unable to add recipe",
+          success: "Project added successfully",
+          error: "Unable to add Project",
         }
       );
       setFormDetails({
@@ -101,7 +101,7 @@ const AddRecipe = () => {
 
   return (
     <section className="box flex flex-col gap-6">
-      <h2 className="font-bold text-xl">Add New Recipe</h2>
+      <h2 className="font-bold text-xl">Add New Project</h2>
       <hr />
       <form
         className="flex flex-col-reverse md:flex-row gap-4 mt-10 justify-around"
@@ -113,7 +113,7 @@ const AddRecipe = () => {
               htmlFor="title"
               className="text-sm font-semibold mb-3 basis-1/2"
             >
-              Recipe name
+              Project Title
             </label>
             <div className="flex flex-col basis-1/2">
               <input
@@ -128,14 +128,14 @@ const AddRecipe = () => {
                 required
                 aria-required="true"
                 aria-describedby="title-error"
-                placeholder="Enter recipe name"
+                placeholder="Enter Project Title"
                 className="p-1.5 border bg-gray-100 rounded focus:outline outline-primary"
               />
               <span
                 id="title-error"
                 className="hidden text-red-500 pl-2 text-sm mt-1"
               >
-                Name should at least 3 characters long
+                Project Name should at least 3 characters long
               </span>
             </div>
           </div>
@@ -145,7 +145,7 @@ const AddRecipe = () => {
               htmlFor="description"
               className="text-sm font-semibold mb-3 basis-1/2"
             >
-              Recipe description
+              Short description
             </label>
             <div className="flex flex-col basis-1/2">
               <textarea
@@ -157,7 +157,7 @@ const AddRecipe = () => {
                 name="description"
                 rows="5"
                 aria-required="true"
-                placeholder="Enter your description here..."
+                placeholder="Enter Short Description here..."
                 className="p-1.5 border bg-gray-100 rounded focus:outline outline-primary w-full resize-none"
               ></textarea>
             </div>
@@ -230,7 +230,7 @@ const AddRecipe = () => {
               htmlFor="ingredient"
               className="text-sm font-semibold mb-3 basis-1/2"
             >
-              Add ingredients
+              Tech Stack
             </label>
             <div className="flex flex-col basis-1/2">
               <div className="flex flex-col gap-2">
@@ -276,7 +276,7 @@ const AddRecipe = () => {
                 htmlFor="instruction"
                 className="text-sm font-semibold mb-3 basis-1/2"
               >
-                Add Steps
+                Long Description
               </label>
               <Button
                 content={"Add"}
@@ -293,7 +293,7 @@ const AddRecipe = () => {
                 name="instruction"
                 rows="7"
                 aria-required="true"
-                placeholder="Write your steps here..."
+                placeholder="Write Long Description here..."
                 className="p-1.5 border bg-gray-100 rounded focus:outline outline-primary w-full resize-none"
               ></textarea>
               {/* All added instructions */}

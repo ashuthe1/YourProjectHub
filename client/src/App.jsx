@@ -42,7 +42,7 @@ function App() {
       />
       <Suspense fallback={<PageLoading />}>
         <Routes>
-          <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+          <Route>
             <Route
               path="/dashboard"
               element={<DashboardLayout />}
@@ -131,14 +131,18 @@ function App() {
                 element={<SingleBlog />}
               />
               <Route
+                  path="add"
+                  element={<AddBlog />}
+                />
+              <Route
                 element={
                   <RequireAuth allowedRoles={[ROLES.ProUser, ROLES.Admin]} />
                 }
               >
-                <Route
+                {/* <Route
                   path="add"
                   element={<AddBlog />}
-                />
+                /> */}
                 <Route
                   path="my-blogs"
                   element={<MyBlogs />}

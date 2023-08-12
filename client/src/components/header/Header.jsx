@@ -36,18 +36,29 @@ const Header = () => {
                     to={"/dashboard/users"}
                     className="relative w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-primary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center font-semibold text-gray-600"
                   >
-                    Dashboard
+                    Admin
                   </NavLink>
                 </li>
               )}
+
             <li>
               <NavLink
                 to={"/recipe"}
                 className="relative w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-primary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center font-semibold text-gray-600"
               >
-                Recipes
+                Projects
               </NavLink>
             </li>
+
+            <li>
+            <NavLink
+                to={"/recipe/add"}
+                className="relative w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-primary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center font-semibold text-gray-600"
+              >
+                Add Project
+            </NavLink>
+            </li>
+
             <li>
               <NavLink
                 to={"/blog"}
@@ -56,6 +67,21 @@ const Header = () => {
                 Blogs
               </NavLink>
             </li>
+
+            {token &&
+              jwtDecode(token)?.UserInfo?.roles?.includes(
+                parseInt(ROLES?.Admin)
+              ) && (
+                <li>
+                  <NavLink
+                    to={"/blog/add"}
+                    className="relative w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-primary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center font-semibold text-gray-600"
+                  >
+                    Admin
+                  </NavLink>
+                </li>
+              )}
+
             <li>
               <NavLink
                 to={"/contact"}

@@ -1,5 +1,5 @@
 import React from "react";
-import { logoNoBg } from "../../assets";
+import { logoNoBg, logoNew } from "../../assets";
 import { Link } from "react-router-dom";
 
 const Logo = ({ customCss, hideName = false }) => {
@@ -11,8 +11,8 @@ const Logo = ({ customCss, hideName = false }) => {
       <div className="flex gap-1.5 items-center">
         <div className="w-12">
           <img
-            src={logoNoBg}
-            alt="recipen logo"
+            src={logoNew}
+            alt="Project Hub logo"
             className="w-full h-full"
           />
         </div>

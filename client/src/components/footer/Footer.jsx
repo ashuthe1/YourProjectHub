@@ -17,9 +17,8 @@ const Footer = () => {
         <div className="basis-1/2 flex flex-col gap-6 items-center md:items-start text-center md:text-start">
           <Logo />
           <p>
-            Your culinary haven for sharing and savoring. Explore recipes,
-            restaurants, and engaging discussions. Join us now and indulge in
-            flavor-filled experiences!"
+            Supercharge your open source contributions with Project Hub!
+            Collabrate with other developers and build amazing projects.
           </p>
         </div>
         {/* Footer top right */}
@@ -34,7 +33,7 @@ const Footer = () => {
               <Link>Blog</Link>
             </motion.li>
             <motion.li whileHover={{ x: 5 }}>
-              <Link>Recipes</Link>
+              <Link>Projects</Link>
             </motion.li>
             <motion.li whileHover={{ x: 5 }}>
               <Link>Contact</Link>
@@ -75,7 +74,7 @@ const Footer = () => {
       {/* Footer bottom */}
       <div className="box flex justify-center sm:justify-between flex-col sm:flex-row w-full gap-4">
         <p className="text-sm text-center">
-          &copy; {new Date().getFullYear()} Recipen. All rights reserved
+          &copy; {new Date().getFullYear()} Project Hub, All rights reserved.
         </p>
         {/* Footer social links */}
         <ul className="flex justify-center gap-6 text-xl">
@@ -84,7 +83,7 @@ const Footer = () => {
             whileHover={{ y: -4 }}
           >
             <a
-              href="https://github.com/Avinash905"
+              href="https://github.com/ashuthe1"
               aria-label="Follow me on github"
             >
               <AiFillGithub />
@@ -95,7 +94,7 @@ const Footer = () => {
             whileHover={{ y: -4 }}
           >
             <a
-              href="https://twitter.com/avinashdunna"
+              href="https://twitter.com/ashuthe1x"
               aria-label="Follow me on twitter"
             >
               <AiFillTwitterCircle />
@@ -106,7 +105,7 @@ const Footer = () => {
             whileHover={{ y: -4 }}
           >
             <a
-              href="https://www.linkedin.com/in/dunna-avinash"
+              href="https://www.linkedin.com/in/ashuthe1"
               aria-label="Follow me on linkedin"
             >
               <AiFillLinkedin />
