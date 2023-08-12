@@ -24,7 +24,7 @@ const Recipe = () => {
           tagline={
             "Supercharge your open source contributions with Project Hub! Collabrate with other developers and build amazing projects."
           }
-          type={"Project"}
+          type={"recipe"}
           data={data}
         />
       )}
