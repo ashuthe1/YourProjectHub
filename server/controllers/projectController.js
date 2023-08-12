@@ -32,24 +32,32 @@ const addProject = async (req, res, next) => {
       description,
       calories,
       cookingTime,
-      ingredients,
-      // instructions,
+      techStacks,
+      longDescription,
     } = req.body;
+    console.log(req.body);
     if (
       !title ||
       !image ||
       !description ||
       !calories ||
       !cookingTime ||
-      !ingredients.length
-      // !instructions.length
+      !techStacks.length ||
+      !longDescription
     ) {
+      console.log("insufficient data");
       return res.status(422).json({ message: "Insufficient data" });
     }
-    const project = Project({ ...req.body, author: req.user });
-    await project.save();
+    const projectData = req.body;
+    projectData.author = req.user;
+    console.log('sabkuch Sahi');
+    console.log(projectData);
+    let newProject = await new Project(projectData);
+    // await project.save();
+    console.log("Saved");
     res.status(201).json({ success: "Project added successfully" });
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };
@@ -62,8 +70,8 @@ const updateProject = async (req, res, next) => {
       description,
       calories,
       cookingTime,
-      ingredients,
-      instructions,
+      techStacks,
+      longDescription,
     } = req.body;
     if (
       !title ||
@@ -71,8 +79,8 @@ const updateProject = async (req, res, next) => {
       !description ||
       !calories ||
       !cookingTime ||
-      !ingredients ||
-      !instructions
+      !techStacks ||
+      !longDescription
     ) {
       return res.status(422).json({ message: "Insufficient data" });
     }

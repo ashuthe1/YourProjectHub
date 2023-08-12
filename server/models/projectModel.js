@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const schema = mongoose.Schema(
+const schema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -13,8 +13,8 @@ const schema = mongoose.Schema(
     image: { type: String },
     cookingTime: { type: String },
     calories: { type: String },
-    ingredients: [{ type: String }],
-    instructions: [{ type: String }],
+    techStacks: [{ typse: String }],
+    longDescription: { type: String },
     ratings: [
       {
         user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },

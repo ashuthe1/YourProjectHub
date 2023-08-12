@@ -259,23 +259,23 @@ const SingleProject = () => {
           </div>
           <hr />
           <div className="flex flex-col md:flex-row gap-4">
-            {/* Project Ingredients */}
+            {/* Project TechStacks */}
             <div className="basis-1/3 flex flex-col gap-4 border-b-2 md:border-b-0 pb-4 md:pb-0 md:border-r-2 border-gray-200 items-center">
               <h3 className="font-bold text-2xl">Tech Stack</h3>
               <ol className="flex flex-col gap-2 list-decimal ml-5">
-                {data?.ingredients?.map((ingredient, i) => (
-                  <li key={`ingredient-${i + 1}`}>{ingredient}</li>
+                {data?.techStacks?.map((techStacks, i) => (
+                  <li key={`techStacks-${i + 1}`}>{techStacks}</li>
                 ))}
               </ol>
             </div>
-            {/* Project Instructions */}
+            {/* Project LongDescription */}
             <div className="basis-2/3 flex flex-col gap-4">
               <h3 className="font-bold text-2xl">Long Description</h3>
               <ul className="ml-2 flex flex-col gap-4">
-                {data?.instructions?.map((instruction, i) => (
-                  <li key={`instruction-${i + 1}`}>
+                {data?.longDescription?.map((longDescription, i) => (
+                  <li key={`longDescription-${i + 1}`}>
                     <h4 className="font-bold text-xl">Step {i + 1}</h4>
-                    <p className="ml-2">{instruction}</p>
+                    <p className="ml-2">{longDescription}</p>
                   </li>
                 ))}
               </ul>

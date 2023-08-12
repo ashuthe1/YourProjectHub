@@ -14,17 +14,17 @@ const AddProject = () => {
     description: "",
     calories: "",
     cookingTime: "",
-    ingredients: [],
-    instructions: [],
+    techStacks: [],
+    longDescription: "",
   });
   const [progress, setProgress] = useState(0);
-  const [ingredient, setIngredient] = useState("");
-  const [instruction, setInstruction] = useState("");
+  const [techStacks, setTechStacks] = useState("");
+  const [longDescription, setLongDescription] = useState("");
   const [focused, setFocused] = useState({
     title: "",
     calories: "",
     cookingTime: "",
-    ingredient: "",
+    techStacks: "",
   });
   const [addProject, { isLoading }] = useAddProjectMutation();
 
@@ -40,34 +40,34 @@ const AddProject = () => {
     }
   };
 
-  const addIngredient = () => {
-    if (!ingredient) {
-      return toast.error("Ingredient cannot be empty");
+  const addTechStacks = () => {
+    if (!techStacks) {
+      return toast.error("TechStacks cannot be empty");
     }
     const updatedFormDetails = { ...formDetails };
-    updatedFormDetails.ingredients.push(ingredient);
+    updatedFormDetails.techStacks.push(techStacks);
     setFormDetails(updatedFormDetails);
-    setIngredient("");
+    setTechStacks("");
   };
 
-  const addInstruction = () => {
-    if (!instruction) {
-      return toast.error("Instruction cannot be empty");
+  const addLongDescription = () => {
+    if (!longDescription) {
+      return toast.error("LongDescription cannot be empty");
     }
     const updatedFormDetails = { ...formDetails };
-    updatedFormDetails.instructions.push(instruction);
+    updatedFormDetails.longDescription.push(longDescription);
     setFormDetails(updatedFormDetails);
-    setInstruction("");
+    setLongDescription("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formDetails.image) return toast.error("Upload Thumbnail image");
-    if (!formDetails.ingredients.length)
-      return toast.error("Ingredients cannot be empty");
-    // if (!formDetails.instructions.length)
-      // return toast.error("Instructions cannot be empty");
+    if (!formDetails.techStacks.length)
+      return toast.error("TechStacks cannot be empty");
+    // if (!formDetails.longDescription.length)
+      // return toast.error("LongDescription cannot be empty");
 
     try {
       const Project = await toast.promise(
@@ -84,14 +84,14 @@ const AddProject = () => {
         description: "",
         calories: "",
         cookingTime: "",
-        ingredients: [],
-        instructions: [],
+        techStacks: [],
+        longDescription: "",
       });
       setFocused({
         title: "",
         calories: "",
         cookingTime: "",
-        ingredient: "",
+        techStacks: "",
       });
     } catch (error) {
       toast.error(error.data);
@@ -227,7 +227,7 @@ const AddProject = () => {
           <hr />
           <div className="flex flex-col sm:flex-row justify-between">
             <label
-              htmlFor="ingredient"
+              htmlFor="techStacks"
               className="text-sm font-semibold mb-3 basis-1/2"
             >
               Tech Stack
@@ -237,26 +237,26 @@ const AddProject = () => {
                 <div className="flex gap-1 justify-between">
                   <input
                     type="text"
-                    onChange={(e) => setIngredient(e.target.value)}
-                    value={ingredient}
-                    id="ingredient"
-                    name="ingredient"
+                    onChange={(e) => setTechStacks(e.target.value)}
+                    value={techStacks}
+                    id="techStacks"
+                    name="techStacks"
                     onBlur={handleFocus}
-                    focused={focused.ingredient.toString()}
+                    focused={focused.techStacks.toString()}
                     pattern={"^.{3,}$"}
                     aria-required="true"
-                    aria-describedby="ingredient-error"
+                    aria-describedby="techStacks-error"
                     placeholder="2 medium onion"
                     className="p-1.5 border bg-gray-100 rounded focus:outline outline-primary w-full"
                   />
                   <Button
                     content={"Add"}
                     customCss={"rounded text-sm px-4 py-1"}
-                    handleClick={addIngredient}
+                    handleClick={addTechStacks}
                   />
                 </div>
                 <ul className="flex flex-col gap-2">
-                  {formDetails.ingredients.map((ele) => (
+                  {formDetails.techStacks.map((ele) => (
                     <li
                       className="flex justify-between items-center shadow hover:shadow-md rounded p-2 gap-2"
                       key={ele}
@@ -270,52 +270,26 @@ const AddProject = () => {
             </div>
           </div>
           <hr />
-          <div className="flex flex-col gap-4 justify-between">
-            <div className="flex gap-1 justify-between items-center">
-              <label
-                htmlFor="instruction"
-                className="text-sm font-semibold mb-3 basis-1/2"
-              >
-                Long Description
-              </label>
-              <Button
-                content={"Add"}
-                customCss={"rounded text-sm px-4 py-1"}
-                handleClick={addInstruction}
-              />
-            </div>
-            <div className="flex flex-col basis-1/2 gap-2">
+          <div className="flex flex-col sm:flex-row justify-between">
+            <label
+              htmlFor="longDescription"
+              className="text-sm font-semibold mb-3 basis-1/2"
+            >
+              Long description
+            </label>
+            <div className="flex flex-col basis-1/2">
               <textarea
                 type="text"
-                onChange={(e) => setInstruction(e.target.value)}
-                value={instruction}
-                id="instruction"
-                name="instruction"
-                rows="7"
+                onChange={handleChange}
+                value={formDetails.longDescription}
+                id="longDescription"
+                required
+                name="longDescription"
+                rows="5"
                 aria-required="true"
-                placeholder="Write Long Description here..."
+                placeholder="Enter Long Description here..."
                 className="p-1.5 border bg-gray-100 rounded focus:outline outline-primary w-full resize-none"
               ></textarea>
-              {/* All added instructions */}
-              <ul className="flex flex-col gap-2">
-                {formDetails.instructions.map((ele, i) => (
-                  <li
-                    className="flex justify-between items-start gap-4 shadow hover:shadow-md rounded p-2"
-                    key={`step-${i}`}
-                  >
-                    <div className="flex flex-col">
-                      <h3 className="font-bold">Step {i + 1}</h3>
-                      <p className="text-sm text-gray-700">{ele}</p>
-                    </div>
-                    <div>
-                      <RxCross2
-                        className="cursor-pointer"
-                        size={20}
-                      />
-                    </div>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
           <Button
