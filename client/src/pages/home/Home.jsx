@@ -11,13 +11,13 @@ const Home = () => {
     <>
       <Hero />
       <HomeCategories
-        title={"Project"}
+        title={"recipe"}
         data={recipes?.data}
         isLoading={recipes?.isLoading}
       />
       <Subscribe />
       <HomeCategories
-        title={"Blog"}
+        title={"blog"}
         data={blogs?.data}
         isLoading={blogs?.isLoading}
       />
