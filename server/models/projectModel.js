@@ -11,8 +11,8 @@ const projectSchema = new mongoose.Schema(
     },
     description: { type: String },
     image: { type: String },
-    cookingTime: { type: String },
-    calories: { type: String },
+    liveLink: { type: String },
+    githubLink: { type: String },
     techStack: [{ type: String }],
     longDescription: [{ type: String }],
     ratings: [

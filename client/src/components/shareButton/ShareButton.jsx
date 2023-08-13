@@ -24,16 +24,6 @@ const ShareButton = ({ url }) => {
       />
       {isMenuOpen && (
         <div className="absolute -left-2 top-9 max-w-max bg-white border rounded shadow-lg z-10 pt-1">
-          <FacebookShareButton
-            url={url}
-            onClick={toggleMenu}
-          >
-            <FacebookIcon
-              round
-              className="mx-2 my-1 text-blue-600 hover:text-blue-800"
-              size={24}
-            />
-          </FacebookShareButton>
           <TwitterShareButton
             url={url}
             onClick={toggleMenu}

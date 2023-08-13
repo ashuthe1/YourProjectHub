@@ -10,9 +10,10 @@ import {
 import { IoMailOutline } from "react-icons/io5";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { LuChefHat } from "react-icons/lu";
-import { BsStopwatch } from "react-icons/bs";
+import { BsStopwatch, BsGithub } from "react-icons/bs";
 import { LiaWeightSolid } from "react-icons/lia";
 import { AiOutlineHeart, AiFillHeart, AiOutlineUser } from "react-icons/ai";
+import {FaLaptopCode} from "react-icons/fa";
 import {
   useGetProjectQuery,
   useRateProjectMutation,
@@ -242,17 +243,17 @@ const SingleProject = () => {
               <p className="my-4">{data?.description}</p>
               {/* Project time & cals */}
               <div className="flex flex-col sm:flex-row gap-4 justify-between w-2/3 mx-auto">
-                <div className="flex flex-col gap-1 items-center">
-                  <BsStopwatch className="text-5xl text-gray-800" />
-                  <h3 className="font-bold text-xl text-primary">
-                    Cooking Time
-                  </h3>
-                  <p>{data?.cookingTime} minutes</p>
-                </div>
                 <div className="flex flex-col gap-1 items-center text-gray-800">
-                  <LiaWeightSolid className="text-5xl" />
-                  <h3 className="font-bold text-xl text-primary">Calories</h3>
-                  <p>{data?.calories} cal</p>
+                  <BsGithub className="text-5xl" />
+                  <h3 className="font-bold text-xl text-primary">Github Link</h3>
+                  <p>{data?.githubLink}</p>
+                </div>
+                <div className="flex flex-col gap-1 items-center">
+                  <FaLaptopCode className="text-5xl text-gray-800" />
+                  <h3 className="font-bold text-xl text-primary">
+                    Live Link
+                  </h3>
+                  <p>{data?.liveLink}</p>
                 </div>
               </div>
             </div>

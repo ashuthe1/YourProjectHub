@@ -21,8 +21,8 @@ const EditProject = () => {
     title: data?.title || "",
     image: data?.image || "",
     description: data?.description || "",
-    calories: data?.calories || "",
-    cookingTime: data?.cookingTime || "",
+    githubLink: data?.githubLink || "",
+    liveLink: data?.liveLink || "",
     techStack: data?.techStack || [],
     longDescription: data?.longDescription || [],
   });
@@ -32,8 +32,8 @@ const EditProject = () => {
   const [longDescription, setLongDescription] = useState("");
   const [focused, setFocused] = useState({
     title: "",
-    calories: "",
-    cookingTime: "",
+    githubLink: "",
+    liveLink: "",
     techStack: "",
   });
 
@@ -43,8 +43,8 @@ const EditProject = () => {
         title: data?.title,
         image: data?.image,
         description: data?.description,
-        calories: data?.calories,
-        cookingTime: data?.cookingTime,
+        githubLink: data?.githubLink,
+        liveLink: data?.liveLink,
         techStack: data?.techStack,
         longDescription: data?.longDescription,
       });
@@ -176,28 +176,28 @@ const EditProject = () => {
             <hr />
             <div className="flex flex-col sm:flex-row justify-between">
               <label
-                htmlFor="calories"
+                htmlFor="githubLink"
                 className="text-sm font-semibold mb-3 basis-1/2"
               >
-                Total calories
+                Total githubLink
               </label>
               <div className="flex flex-col basis-1/2">
                 <input
                   type="number"
                   onChange={handleChange}
-                  value={formDetails.calories}
-                  id="calories"
+                  value={formDetails.githubLink}
+                  id="githubLink"
                   required
-                  name="calories"
+                  name="githubLink"
                   onBlur={handleFocus}
-                  focused={focused.calories.toString()}
+                  focused={focused.githubLink.toString()}
                   aria-required="true"
-                  aria-describedby="calories-error"
-                  placeholder="Enter total calories"
+                  aria-describedby="githubLink-error"
+                  placeholder="Enter total githubLink"
                   className="p-1.5 border bg-gray-100 rounded focus:outline outline-primary"
                 />
                 <span
-                  id="calories-error"
+                  id="githubLink-error"
                   className="hidden text-red-500 pl-2 text-sm mt-1"
                 >
                   Should not include letters or special characters
@@ -207,7 +207,7 @@ const EditProject = () => {
             <hr />
             <div className="flex flex-col sm:flex-row justify-between">
               <label
-                htmlFor="cookingTime"
+                htmlFor="liveLink"
                 className="text-sm font-semibold mb-3 basis-1/2"
               >
                 Cooking time
@@ -216,19 +216,19 @@ const EditProject = () => {
                 <input
                   type="number"
                   onChange={handleChange}
-                  value={formDetails.cookingTime}
-                  id="cookingTime"
+                  value={formDetails.liveLink}
+                  id="liveLink"
                   required
-                  name="cookingTime"
+                  name="liveLink"
                   onBlur={handleFocus}
-                  focused={focused.cookingTime.toString()}
+                  focused={focused.liveLink.toString()}
                   aria-required="true"
-                  aria-describedby="cookingTime-error"
+                  aria-describedby="liveLink-error"
                   placeholder="Total cooking time in mins."
                   className="p-1.5 border bg-gray-100 rounded focus:outline outline-primary"
                 />
                 <span
-                  id="cookingTime-error"
+                  id="liveLink-error"
                   className="hidden text-red-500 pl-2 text-sm mt-1"
                 >
                   Must only include numbers

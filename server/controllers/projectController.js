@@ -30,8 +30,8 @@ const addProject = async (req, res, next) => {
       title,
       image,
       description,
-      calories,
-      cookingTime,
+      githubLink,
+      liveLink,
       techStack,
       longDescription,
     } = req.body;
@@ -39,8 +39,8 @@ const addProject = async (req, res, next) => {
       !title ||
       !image ||
       !description ||
-      !calories ||
-      !cookingTime ||
+      !githubLink ||
+      !liveLink ||
       !techStack.length
     ) {
       return res.status(422).json({ message: "Insufficient data" });
@@ -59,8 +59,8 @@ const updateProject = async (req, res, next) => {
       title,
       image,
       description,
-      calories,
-      cookingTime,
+      githubLink,
+      liveLink,
       techStack,
       longDescription,
     } = req.body;
@@ -68,8 +68,8 @@ const updateProject = async (req, res, next) => {
       !title ||
       !image ||
       !description ||
-      !calories ||
-      !cookingTime ||
+      !githubLink ||
+      !liveLink ||
       !techStack ||
       !longDescription
     ) {
