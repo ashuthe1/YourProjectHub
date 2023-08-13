@@ -28,6 +28,9 @@ app.use("/api/project", require("./routes/projectRoutes"));
 app.use("/api/blog", require("./routes/blogRoutes"));
 app.use("/api/stripe", require("./routes/subscriptionRoutes"));
 
+app.get("/", (req, res) => {
+  res.send("Server running!");
+});
 app.use(errorHandler);
 
 app.listen(port, () => {
