@@ -246,7 +246,7 @@ const AddProject = () => {
                     pattern={"^.{3,}$"}
                     aria-required="true"
                     aria-describedby="techStack-error"
-                    placeholder="2 medium onion"
+                    placeholder="MongoDB, ExpressJs, React"
                     className="p-1.5 border bg-gray-100 rounded focus:outline outline-primary w-full"
                   />
                   <Button

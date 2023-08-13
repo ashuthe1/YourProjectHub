@@ -103,10 +103,10 @@ function App() {
                   <RequireAuth allowedRoles={[ROLES.ProUser, ROLES.Admin]} />
                 }
               >
-                <Route
+                {/* <Route
                   path="add"
                   element={<AddProject />}
-                />
+                /> */}
                 <Route
                   path="my-projects"
                   element={<MyProjects />}

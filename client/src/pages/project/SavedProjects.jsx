@@ -22,9 +22,9 @@ const index = () => {
         <ComponentLoading />
       ) : (
         <AllCards
-          mainTitle={"Your Flavorful Collection"}
+          mainTitle={"Your Faviourate Projects!"}
           tagline={
-            "Welcome to your personal culinary treasury - a haven for your favorite projects!"
+            "Welcome to your personal space. Here you can find all your saved projects."
           }
           type={"project"}
           data={updatedData}
