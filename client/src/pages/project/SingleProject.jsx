@@ -259,12 +259,12 @@ const SingleProject = () => {
           </div>
           <hr />
           <div className="flex flex-col md:flex-row gap-4">
-            {/* Project TechStacks */}
+            {/* Project TechStack */}
             <div className="basis-1/3 flex flex-col gap-4 border-b-2 md:border-b-0 pb-4 md:pb-0 md:border-r-2 border-gray-200 items-center">
               <h3 className="font-bold text-2xl">Tech Stack</h3>
               <ol className="flex flex-col gap-2 list-decimal ml-5">
-                {data?.techStacks?.map((techStacks, i) => (
-                  <li key={`techStacks-${i + 1}`}>{techStacks}</li>
+                {data?.techStack?.map((techStack, i) => (
+                  <li key={`techStack-${i + 1}`}>{techStack}</li>
                 ))}
               </ol>
             </div>

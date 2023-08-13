@@ -13,8 +13,8 @@ const projectSchema = new mongoose.Schema(
     image: { type: String },
     cookingTime: { type: String },
     calories: { type: String },
-    techStacks: [{ typse: String }],
-    longDescription: { type: String },
+    techStack: [{ type: String }],
+    longDescription: [{ type: String }],
     ratings: [
       {
         user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },

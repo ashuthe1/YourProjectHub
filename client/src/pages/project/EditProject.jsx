@@ -23,18 +23,18 @@ const EditProject = () => {
     description: data?.description || "",
     calories: data?.calories || "",
     cookingTime: data?.cookingTime || "",
-    techStacks: data?.techStacks || [],
+    techStack: data?.techStack || [],
     longDescription: data?.longDescription || [],
   });
 
   const [progress, setProgress] = useState(0);
-  const [techStacks, setTechStacks] = useState("");
+  const [techStack, setTechStack] = useState("");
   const [longDescription, setLongDescription] = useState("");
   const [focused, setFocused] = useState({
     title: "",
     calories: "",
     cookingTime: "",
-    techStacks: "",
+    techStack: "",
   });
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const EditProject = () => {
         description: data?.description,
         calories: data?.calories,
         cookingTime: data?.cookingTime,
-        techStacks: data?.techStacks,
+        techStack: data?.techStack,
         longDescription: data?.longDescription,
       });
     }
@@ -63,14 +63,14 @@ const EditProject = () => {
     }
   };
 
-  const addTechStacks = () => {
-    if (!techStacks) {
-      return toast.error("TechStacks cannot be empty");
+  const addTechStack = () => {
+    if (!techStack) {
+      return toast.error("TechStack cannot be empty");
     }
     const updatedFormDetails = { ...formDetails };
-    updatedFormDetails.techStacks.push(techStacks);
+    updatedFormDetails.techStack.push(techStack);
     setFormDetails(updatedFormDetails);
-    setTechStacks("");
+    setTechStack("");
   };
 
   const addLongDescription = () => {
@@ -87,8 +87,8 @@ const EditProject = () => {
     e.preventDefault();
 
     if (!formDetails.image) return toast.error("Upload project image");
-    if (!formDetails.techStacks.length)
-      return toast.error("TechStacks cannot be empty");
+    if (!formDetails.techStack.length)
+      return toast.error("TechStack cannot be empty");
     if (!formDetails.longDescription.length)
       return toast.error("LongDescription cannot be empty");
 
@@ -238,36 +238,36 @@ const EditProject = () => {
             <hr />
             <div className="flex flex-col sm:flex-row justify-between">
               <label
-                htmlFor="techStacks"
+                htmlFor="techStack"
                 className="text-sm font-semibold mb-3 basis-1/2"
               >
-                Add techStacks
+                Add techStack
               </label>
               <div className="flex flex-col basis-1/2">
                 <div className="flex flex-col gap-2">
                   <div className="flex gap-1 justify-between">
                     <input
                       type="text"
-                      onChange={(e) => setTechStacks(e.target.value)}
-                      value={techStacks}
-                      id="techStacks"
-                      name="techStacks"
+                      onChange={(e) => setTechStack(e.target.value)}
+                      value={techStack}
+                      id="techStack"
+                      name="techStack"
                       onBlur={handleFocus}
-                      focused={focused.techStacks.toString()}
+                      focused={focused.techStack.toString()}
                       pattern={"^.{3,}$"}
                       aria-required="true"
-                      aria-describedby="techStacks-error"
+                      aria-describedby="techStack-error"
                       placeholder="2 medium onion"
                       className="p-1.5 border bg-gray-100 rounded focus:outline outline-primary w-full"
                     />
                     <Button
                       content={"Add"}
                       customCss={"rounded text-sm px-4 py-1"}
-                      handleClick={addTechStacks}
+                      handleClick={addTechStack}
                     />
                   </div>
                   <ul className="flex flex-col gap-2">
-                    {formDetails.techStacks.map((ele) => (
+                    {formDetails.techStack.map((ele) => (
                       <li
                         className="flex justify-between items-center shadow hover:shadow-md rounded p-2 gap-2"
                         key={ele}

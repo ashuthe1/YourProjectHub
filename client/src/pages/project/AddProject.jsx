@@ -14,17 +14,17 @@ const AddProject = () => {
     description: "",
     calories: "",
     cookingTime: "",
-    techStacks: [],
-    longDescription: "",
+    techStack: [],
+    longDescription: [],
   });
   const [progress, setProgress] = useState(0);
-  const [techStacks, setTechStacks] = useState("");
+  const [techStack, setTechStack] = useState("");
   const [longDescription, setLongDescription] = useState("");
   const [focused, setFocused] = useState({
     title: "",
     calories: "",
     cookingTime: "",
-    techStacks: "",
+    techStack: "",
   });
   const [addProject, { isLoading }] = useAddProjectMutation();
 
@@ -40,14 +40,14 @@ const AddProject = () => {
     }
   };
 
-  const addTechStacks = () => {
-    if (!techStacks) {
-      return toast.error("TechStacks cannot be empty");
+  const addTechStack = () => {
+    if (!techStack) {
+      return toast.error("TechStack cannot be empty");
     }
     const updatedFormDetails = { ...formDetails };
-    updatedFormDetails.techStacks.push(techStacks);
+    updatedFormDetails.techStack.push(techStack);
     setFormDetails(updatedFormDetails);
-    setTechStacks("");
+    setTechStack("");
   };
 
   const addLongDescription = () => {
@@ -63,19 +63,19 @@ const AddProject = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formDetails.image) return toast.error("Upload Thumbnail image");
-    if (!formDetails.techStacks.length)
-      return toast.error("TechStacks cannot be empty");
+    if (!formDetails.image) return toast.error("Upload project image");
+    if (!formDetails.techStack.length)
+      return toast.error("TechStack cannot be empty");
     // if (!formDetails.longDescription.length)
-      // return toast.error("LongDescription cannot be empty");
+    //   return toast.error("LongDescription cannot be empty");
 
     try {
-      const Project = await toast.promise(
+      const project = await toast.promise(
         addProject({ ...formDetails }).unwrap(),
         {
           pending: "Please wait...",
           success: "Project added successfully",
-          error: "Unable to add Project",
+          error: "Unable to add project",
         }
       );
       setFormDetails({
@@ -84,14 +84,14 @@ const AddProject = () => {
         description: "",
         calories: "",
         cookingTime: "",
-        techStacks: [],
-        longDescription: "",
+        techStack: [],
+        longDescription: [],
       });
       setFocused({
         title: "",
         calories: "",
         cookingTime: "",
-        techStacks: "",
+        techStack: "",
       });
     } catch (error) {
       toast.error(error.data);
@@ -113,7 +113,7 @@ const AddProject = () => {
               htmlFor="title"
               className="text-sm font-semibold mb-3 basis-1/2"
             >
-              Project Title
+              Project name
             </label>
             <div className="flex flex-col basis-1/2">
               <input
@@ -128,14 +128,14 @@ const AddProject = () => {
                 required
                 aria-required="true"
                 aria-describedby="title-error"
-                placeholder="Enter Project Title"
+                placeholder="Enter project name"
                 className="p-1.5 border bg-gray-100 rounded focus:outline outline-primary"
               />
               <span
                 id="title-error"
                 className="hidden text-red-500 pl-2 text-sm mt-1"
               >
-                Project Name should at least 3 characters long
+                Name should at least 3 characters long
               </span>
             </div>
           </div>
@@ -145,7 +145,7 @@ const AddProject = () => {
               htmlFor="description"
               className="text-sm font-semibold mb-3 basis-1/2"
             >
-              Short description
+              Project description
             </label>
             <div className="flex flex-col basis-1/2">
               <textarea
@@ -157,7 +157,7 @@ const AddProject = () => {
                 name="description"
                 rows="5"
                 aria-required="true"
-                placeholder="Enter Short Description here..."
+                placeholder="Enter your description here..."
                 className="p-1.5 border bg-gray-100 rounded focus:outline outline-primary w-full resize-none"
               ></textarea>
             </div>
@@ -227,36 +227,36 @@ const AddProject = () => {
           <hr />
           <div className="flex flex-col sm:flex-row justify-between">
             <label
-              htmlFor="techStacks"
+              htmlFor="techStack"
               className="text-sm font-semibold mb-3 basis-1/2"
             >
-              Tech Stack
+              Add techStack
             </label>
             <div className="flex flex-col basis-1/2">
               <div className="flex flex-col gap-2">
                 <div className="flex gap-1 justify-between">
                   <input
                     type="text"
-                    onChange={(e) => setTechStacks(e.target.value)}
-                    value={techStacks}
-                    id="techStacks"
-                    name="techStacks"
+                    onChange={(e) => setTechStack(e.target.value)}
+                    value={techStack}
+                    id="techStack"
+                    name="techStack"
                     onBlur={handleFocus}
-                    focused={focused.techStacks.toString()}
+                    focused={focused.techStack.toString()}
                     pattern={"^.{3,}$"}
                     aria-required="true"
-                    aria-describedby="techStacks-error"
+                    aria-describedby="techStack-error"
                     placeholder="2 medium onion"
                     className="p-1.5 border bg-gray-100 rounded focus:outline outline-primary w-full"
                   />
                   <Button
                     content={"Add"}
                     customCss={"rounded text-sm px-4 py-1"}
-                    handleClick={addTechStacks}
+                    handleClick={addTechStack}
                   />
                 </div>
                 <ul className="flex flex-col gap-2">
-                  {formDetails.techStacks.map((ele) => (
+                  {formDetails.techStack.map((ele) => (
                     <li
                       className="flex justify-between items-center shadow hover:shadow-md rounded p-2 gap-2"
                       key={ele}
@@ -270,37 +270,63 @@ const AddProject = () => {
             </div>
           </div>
           <hr />
-          <div className="flex flex-col sm:flex-row justify-between">
-            <label
-              htmlFor="longDescription"
-              className="text-sm font-semibold mb-3 basis-1/2"
-            >
-              Long description
-            </label>
-            <div className="flex flex-col basis-1/2">
+          <div className="flex flex-col gap-4 justify-between">
+            <div className="flex gap-1 justify-between items-center">
+              <label
+                htmlFor="longDescription"
+                className="text-sm font-semibold mb-3 basis-1/2"
+              >
+                Add Steps
+              </label>
+              <Button
+                content={"Add"}
+                customCss={"rounded text-sm px-4 py-1"}
+                handleClick={addLongDescription}
+              />
+            </div>
+            <div className="flex flex-col basis-1/2 gap-2">
               <textarea
                 type="text"
-                onChange={handleChange}
-                value={formDetails.longDescription}
+                onChange={(e) => setLongDescription(e.target.value)}
+                value={longDescription}
                 id="longDescription"
-                required
                 name="longDescription"
-                rows="5"
+                rows="7"
                 aria-required="true"
-                placeholder="Enter Long Description here..."
+                placeholder="Write your steps here..."
                 className="p-1.5 border bg-gray-100 rounded focus:outline outline-primary w-full resize-none"
               ></textarea>
+              {/* All added longDescription */}
+              <ul className="flex flex-col gap-2">
+                {formDetails.longDescription.map((ele, i) => (
+                  <li
+                    className="flex justify-between items-start gap-4 shadow hover:shadow-md rounded p-2"
+                    key={`step-${i}`}
+                  >
+                    <div className="flex flex-col">
+                      <h3 className="font-bold">Step {i + 1}</h3>
+                      <p className="text-sm text-gray-700">{ele}</p>
+                    </div>
+                    <div>
+                      <RxCross2
+                        className="cursor-pointer"
+                        size={20}
+                      />
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
           <Button
-            content={"Add Project"}
+            content={"Add project"}
             type={"submit"}
             customCss={"rounded px-4 py-1 max-w-max"}
             loading={isLoading}
           />
         </div>
         <hr className="block md:hidden mt-6" />
-        {/* Upload Project image */}
+        {/* Upload project image */}
         <div className="basis-1/3 rounded-xl shadow-md hover:shadow-primary hover:shadow flex justify-center items-center w-full p-8 max-h-[300px]">
           <label
             htmlFor="image"
