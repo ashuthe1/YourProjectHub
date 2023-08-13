@@ -182,7 +182,7 @@ const AddProject = () => {
                 focused={focused.githubLink.toString()}
                 aria-required="true"
                 aria-describedby="githubLink-error"
-                placeholder="Enter total githubLink"
+                placeholder="Enter Github Link"
                 className="p-1.5 border bg-gray-100 rounded focus:outline outline-primary"
               />
               <span
@@ -213,7 +213,7 @@ const AddProject = () => {
                 focused={focused.liveLink.toString()}
                 aria-required="true"
                 aria-describedby="liveLink-error"
-                placeholder="Total cooking time in mins."
+                placeholder="Enter live link"
                 className="p-1.5 border bg-gray-100 rounded focus:outline outline-primary"
               />
               <span
@@ -276,7 +276,7 @@ const AddProject = () => {
                 htmlFor="longDescription"
                 className="text-sm font-semibold mb-3 basis-1/2"
               >
-                Add Steps
+                Enter Long Description about Project!
               </label>
               <Button
                 content={"Add"}
