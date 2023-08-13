@@ -1,81 +1,81 @@
 import { apiSlice } from "../../redux/apiSlice";
 
-export const ProjectApiSlice = apiSlice.injectEndpoints({
+export const projectApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getProject: builder.query({
-      query: (ProjectId) => `/project/${ProjectId}`,
-      providesTags: ["Projects"],
+      query: (projectId) => `/project/${projectId}`,
+      providesTags: ["projects"],
     }),
     getProjects: builder.query({
-      query: () => "/Project",
-      providesTags: ["Projects"],
+      query: () => "/project",
+      providesTags: ["projects"],
     }),
     addProject: builder.mutation({
-      query: (ProjectData) => ({
-        url: "/Project",
+      query: (projectData) => ({
+        url: "/project",
         method: "POST",
-        body: { ...ProjectData },
+        body: { ...projectData },
       }),
-      invalidatesTags: ["Projects"],
+      invalidatesTags: ["projects"],
     }),
     updateProject: builder.mutation({
       query: (args) => {
-        const { ProjectId, ...ProjectData } = args;
+        const { projectId, ...projectData } = args;
         return {
-          url: `/project/${ProjectId}`,
+          url: `/project/${projectId}`,
           method: "PUT",
-          body: { ...ProjectData },
+          body: { ...projectData },
         };
       },
-      invalidatesTags: ["Projects"],
+      invalidatesTags: ["projects"],
     }),
     rateProject: builder.mutation({
       query: (args) => {
-        const { ProjectId, rating } = args;
+        const { projectId, rating } = args;
         return {
-          url: `/project/rate/${ProjectId}`,
+          url: `/project/rate/${projectId}`,
           method: "PUT",
           body: { rating },
         };
       },
-      invalidatesTags: ["Projects"],
+      invalidatesTags: ["projects"],
     }),
     deleteProject: builder.mutation({
-      query: (ProjectId) => ({
-        url: `/project/${ProjectId}`,
+      query: (projectId) => ({
+        url: `/project/${projectId}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Projects"],
+      invalidatesTags: ["projects"],
     }),
     commentProject: builder.mutation({
       query: (args) => {
-        const { ProjectId, comment } = args;
+        const { projectId, comment } = args;
         return {
-          url: `/project/comment/${ProjectId}`,
+          url: `/project/comment/${projectId}`,
           method: "PUT",
           body: { comment },
         };
       },
-      invalidatesTags: ["Projects"],
+      invalidatesTags: ["projects"],
     }),
     deleteCommentProject: builder.mutation({
       query: (args) => {
-        const { ProjectId, commentId } = args;
+        const { projectId, commentId } = args;
         return {
-          url: `/project/comment/${ProjectId}/${commentId}`,
+          url: `/project/comment/${projectId}/${commentId}`,
           method: "DELETE",
         };
       },
-      invalidatesTags: ["Projects"],
+      invalidatesTags: ["projects"],
     }),
     toggleFavorite: builder.mutation({
-      query: ({ ProjectId }) => {
+      query: ({ projectId }) => {
         return {
-          url: `/project/favorite/${ProjectId}`,
+          url: `/project/favorite/${projectId}`,
           method: "PUT",
         };
       },
-      invalidatesTags: ["Projects"],
+      invalidatesTags: ["projects"],
     }),
   }),
 });
@@ -90,4 +90,4 @@ export const {
   useCommentProjectMutation,
   useDeleteCommentProjectMutation,
   useToggleFavoriteMutation,
-} = ProjectApiSlice;
+} = projectApiSlice;

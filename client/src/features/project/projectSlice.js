@@ -7,7 +7,7 @@ const projectSlice = createSlice({
   },
   reducers: {
     setProjects: (state, action) => {
-      state.project = action.payload;
+      state.projects = action.payload;
     },
   },
 });

@@ -4,10 +4,10 @@ const jwt = require("jsonwebtoken");
 
 const getAllProjects = async (req, res, next) => {
   try {
-    const recipes = await Project.find()
+    const projects = await Project.find()
       .sort({ createdAt: -1 })
       .populate("author", "name");
-    res.status(200).send(recipes);
+    res.status(200).send(projects);
   } catch (error) {
     next(error);
   }
@@ -15,10 +15,10 @@ const getAllProjects = async (req, res, next) => {
 
 const getProject = async (req, res, next) => {
   try {
-    const recipe = await Project.findOne({ _id: req.params.id })
+    const project = await Project.findOne({ _id: req.params.id })
       .populate("author", "name")
       .populate("comments.user", ["name", "profilePicture"]);
-    res.status(200).send(recipe);
+    res.status(200).send(project);
   } catch (error) {
     next(error);
   }
@@ -45,8 +45,8 @@ const addProject = async (req, res, next) => {
     ) {
       return res.status(422).json({ message: "Insufficient data" });
     }
-    const recipe = Project({ ...req.body, author: req.user });
-    await recipe.save();
+    const project = Project({ ...req.body, author: req.user });
+    await project.save();
     res.status(201).json({ success: "Project added successfully" });
   } catch (error) {
     next(error);
@@ -75,14 +75,14 @@ const updateProject = async (req, res, next) => {
     ) {
       return res.status(422).json({ message: "Insufficient data" });
     }
-    const recipe = await Project.findByIdAndUpdate(
+    const project = await Project.findByIdAndUpdate(
       req.params.id,
       {
         ...req.body,
       },
       { new: true }
     );
-    res.status(201).json(recipe);
+    res.status(201).json(project);
   } catch (error) {
     next(error);
   }
@@ -92,24 +92,24 @@ const rateProject = async (req, res, next) => {
   try {
     const { rating } = req.body;
 
-    const recipe = await Project.findById(req.params.id);
-    if (!recipe) {
+    const project = await Project.findById(req.params.id);
+    if (!project) {
       return res.status(404).json({ error: "Project not found." });
     }
 
-    // Check if the user has already rated this recipe
-    const existingRating = recipe.ratings.find((rate) =>
+    // Check if the user has already rated this project
+    const existingRating = project.ratings.find((rate) =>
       rate.user.equals(req.user)
     );
     if (existingRating) {
       return res
         .status(400)
-        .json({ error: "User has already rated this recipe" });
+        .json({ error: "User has already rated this project" });
     }
 
     // Add the new rating
-    recipe.ratings.push({ user: req.user, rating: rating });
-    await recipe.save();
+    project.ratings.push({ user: req.user, rating: rating });
+    await project.save();
 
     res.status(201).json({ message: "Rating added successfully." });
   } catch (error) {
@@ -119,7 +119,7 @@ const rateProject = async (req, res, next) => {
 
 const deleteProject = async (req, res, next) => {
   try {
-    const recipe = await Project.findOneAndDelete({ _id: req.params.id });
+    const project = await Project.findOneAndDelete({ _id: req.params.id });
     res.sendStatus(204);
   } catch (error) {
     next(error);
@@ -135,14 +135,14 @@ const addComment = async (req, res, next) => {
       return res.status(400).json({ error: "Comment is required." });
     }
 
-    const recipe = await Project.findById(req.params.id);
-    if (!recipe) {
+    const project = await Project.findById(req.params.id);
+    if (!project) {
       return res.status(404).json({ error: "Project not found." });
     }
 
     // Add the new comment
-    recipe.comments.push({ user: req.user, comment });
-    await recipe.save();
+    project.comments.push({ user: req.user, comment });
+    await project.save();
 
     res.status(201).json({ message: "Comment added successfully." });
   } catch (error) {
@@ -152,22 +152,22 @@ const addComment = async (req, res, next) => {
 
 const deleteComment = async (req, res, next) => {
   try {
-    const { recipeId, commentId } = req.params;
+    const { projectId, commentId } = req.params;
 
-    const recipe = await Project.findById(recipeId);
-    if (!recipe) {
+    const project = await Project.findById(projectId);
+    if (!project) {
       return res.status(404).json({ error: "Project not found." });
     }
 
-    const commentIndex = recipe.comments.findIndex((comment) =>
+    const commentIndex = project.comments.findIndex((comment) =>
       comment._id.equals(commentId)
     );
     if (commentIndex === -1) {
       return res.status(404).json({ error: "Comment not found." });
     }
 
-    recipe.comments.splice(commentIndex, 1);
-    await recipe.save();
+    project.comments.splice(commentIndex, 1);
+    await project.save();
 
     res.status(200).json({ message: "Comment deleted successfully." });
   } catch (error) {
@@ -178,18 +178,18 @@ const deleteComment = async (req, res, next) => {
 const toggleFavoriteProject = async (req, res, next) => {
   try {
     const user = await User.findById(req.user);
-
+    console.log(req.user, req.params.id);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const recipeIndex = user.favorites.indexOf(req.params.id);
-    if (recipeIndex === -1) {
+    const projectIndex = user.favorites.indexOf(req.params.id);
+    if (projectIndex === -1) {
       // Project not present, add it to favorites
       user.favorites.push(req.params.id);
     } else {
       // Project already present, remove it from favorites
-      user.favorites.splice(recipeIndex, 1);
+      user.favorites.splice(projectIndex, 1);
     }
 
     await user.save();
