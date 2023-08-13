@@ -33,34 +33,77 @@ const addProject = async (req, res, next) => {
       calories,
       cookingTime,
       techStacks,
-      longDescription,
+      longDescription
     } = req.body;
-    console.log(req.body);
     if (
       !title ||
       !image ||
       !description ||
       !calories ||
       !cookingTime ||
-      !techStacks.length ||
-      !longDescription
+      !techStacks.length
     ) {
-      console.log("insufficient data");
       return res.status(422).json({ message: "Insufficient data" });
     }
-    const projectData = req.body;
-    projectData.author = req.user;
-    console.log('sabkuch Sahi');
-    console.log(projectData);
-    let newProject = await new Project(projectData);
-    // await project.save();
-    console.log("Saved");
+
+    const newProject = { ...req.body, author: req.user };
+    console.log(newProject);
+
+    let data = new Project({
+      title:newProject.title,
+      description:newProject.description,
+      image:newProject.image,
+      calories:newProject.calories,
+      cookingTime:newProject.cookingTime,
+      techStacks:newProject.techStacks,
+      longDescription:newProject.longDescription,
+    });
+    data.save();
     res.status(201).json({ success: "Project added successfully" });
+    console.log("Saved");
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
+
+// const addProject = async (req, res, next) => {
+//   try {
+//     const {
+//       title,
+//       image,
+//       description,
+//       calories,
+//       cookingTime,
+//       techStacks,
+//       longDescription,
+//     } = req.body;
+//     console.log(req.body);
+//     if (
+//       !title ||
+//       !image ||
+//       !description ||
+//       !calories ||
+//       !cookingTime ||
+//       !techStacks.length ||
+//       !longDescription
+//     ) {
+//       console.log("insufficient data");
+//       return res.status(422).json({ message: "Insufficient data" });
+//     }
+//     const projectData = req.body;
+//     projectData.author = req.user;
+//     console.log('sabkuch Sahi');
+//     console.log(projectData);
+//     const newProject = await new Project(projectData);
+//     // await project.save();
+//     console.log("Saved");
+//     console.log(newProject);
+//     res.status(201).json({ success: "Project added successfully" });
+//   } catch (error) {
+//     console.log(error);
+//     next(error);
+//   }
+// };
 
 const updateProject = async (req, res, next) => {
   try {
