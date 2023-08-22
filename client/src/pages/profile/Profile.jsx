@@ -43,8 +43,8 @@ const Profile = () => {
         updateUser({ ...formDetails, userId: user?.userId }).unwrap(),
         {
           pending: "Please wait...",
-          success: "User added successfully",
-          error: "Unable to add user",
+          success: "Profile updated successfully",
+          error: "Unable to update profile",
         }
       );
       setFormDetails({
@@ -96,7 +96,7 @@ const Profile = () => {
                 htmlFor="image"
                 className="bg-primaryLight hover:bg-primary text-light py-2 px-4 shadow-lg font-semibold text-center rounded max-w-max text-sm cursor-pointer"
               >
-                Change profile
+                Change profile pic
               </label>
               <input
                 type="file"
