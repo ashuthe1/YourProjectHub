@@ -51,7 +51,7 @@ const login = async (req, res, next) => {
             name: foundUser.name,
             email: foundUser.email,
             profilePicture: foundUser.profilePicture,
-            roles: foundUser.roles,
+            roles: roles,
             favorites: foundUser.favorites,
           },
         },
