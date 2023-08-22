@@ -3,12 +3,13 @@ import { GiKnifeFork } from "react-icons/gi";
 import {FaLaptopCode} from "react-icons/fa"
 import { Button } from "..";
 import { Link } from "react-router-dom";
+import "./Hero.css";
 
 const text = "Code --> Collab --> Connect";
 const Hero = () => {
   return (
-    <section className="box h-[82vh] flex flex-col-reverse md:flex-row justify-between gap-8 md:gap-16">
-      <div className="flex flex-col items-center md:items-start justify-center basis-1/2 gap-4">
+    <section className="box h-[82vh] flex flex-col-reverse md:flex-row justify-between gap-8 md:gap-16 myHero">
+      <div className="flex flex-col items-center md:items-start justify-center basis-1/2 gap-4 left">
         <span className="text-primary text-sm px-4 py-1 rounded-full border-2 border-primary max-w-max">
           {text}
         </span>
@@ -29,7 +30,8 @@ const Hero = () => {
           />
         </Link>
       </div>
-      <div className="basis-1/2 bg-hero bg-no-repeat bg-cover bg-center rounded-xl"></div>
+      {/* <div className="basis-1/2 bg-hero bg-no-repeat bg-center rounded-xl heroBg"></div> */}
+      <div className=" bg-hero bg-no-repeat heroBg"></div>
     </section>
   );
 };
