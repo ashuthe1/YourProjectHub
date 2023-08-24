@@ -275,7 +275,6 @@ const SingleProject = () => {
               <ul className="ml-2 flex flex-col gap-4">
                 {data?.longDescription?.map((longDescription, i) => (
                   <li key={`longDescription-${i + 1}`}>
-                    <h4 className="font-bold text-xl">Step {i + 1}</h4>
                     <p className="ml-2">{longDescription}</p>
                   </li>
                 ))}
