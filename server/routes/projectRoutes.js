@@ -20,7 +20,7 @@ router
   .route("/")
   .get(getAllProjects)
   .post(
-    [verifyJwt, verifyRoles(ROLES_LIST.Admin, ROLES_LIST.ProUser)],
+    [verifyJwt, verifyRoles(ROLES_LIST.BasicUser, ROLES_LIST.Admin, ROLES_LIST.ProUser)],
     addProject
   );
 
@@ -38,11 +38,11 @@ router
   .route("/:id")
   .get(getProject)
   .put(
-    [verifyJwt, verifyRoles(ROLES_LIST.Admin, ROLES_LIST.ProUser)],
+    [verifyJwt, verifyRoles(ROLES_LIST.BasicUser, ROLES_LIST.Admin, ROLES_LIST.ProUser)],
     updateProject
   )
   .delete(
-    [verifyJwt, verifyRoles(ROLES_LIST.Admin, ROLES_LIST.ProUser)],
+    [verifyJwt, verifyRoles(ROLES_LIST.BasicUser, ROLES_LIST.Admin, ROLES_LIST.ProUser)],
     deleteProject
   );
 

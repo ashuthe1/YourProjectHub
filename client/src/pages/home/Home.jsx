@@ -1,5 +1,5 @@
 import React from "react";
-import { Hero, HomeCategories, Subscribe } from "../../components";
+import { Hero, HomeCategories} from "../../components";
 import { useGetProjectsQuery } from "../../features/project/projectApiSlice";
 import { useGetBlogsQuery } from "../../features/blog/blogApiSlice";
 
@@ -15,7 +15,6 @@ const Home = () => {
         data={projects?.data}
         isLoading={projects?.isLoading}
       />
-      <Subscribe />
       <HomeCategories
         title={"blog"}
         data={blogs?.data}
