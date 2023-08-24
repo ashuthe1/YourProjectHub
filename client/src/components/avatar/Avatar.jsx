@@ -112,7 +112,7 @@ const Avatar = () => {
           </Link>
         </MenuItem>
         {decoded?.roles?.find((role) =>
-          [ROLES.Admin, ROLES.ProUser]?.includes(role?.toString())
+          [ ROLES.Admin, ROLES.ProUser]?.includes(role?.toString())
         ) && (
           <Box>
             <Divider />
